@@ -6,20 +6,22 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
   return {
-    plugins: [vue(),
-    viteMockServe({
-      localEnabled: command === 'serve',
-    }),
-    createSvgIconsPlugin({
-      // Specify the icon folder to be cached
-      iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-      // Specify symbolId format
-      symbolId: 'icon-[dir]-[name]',
-    }),],
+    plugins: [
+      vue(),
+      viteMockServe({
+        localEnabled: command === 'serve',
+      }),
+      createSvgIconsPlugin({
+        // Specify the icon folder to be cached
+        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+        // Specify symbolId format
+        symbolId: 'icon-[dir]-[name]',
+      }),
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
-      }
+      },
     },
     css: {
       preprocessorOptions: {
@@ -30,5 +32,4 @@ export default defineConfig(({ command }) => {
       },
     },
   }
-}
-)
+})
