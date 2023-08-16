@@ -6,7 +6,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   //获取各种环境下的对应的变量
-  let env = loadEnv(mode, process.cwd());
+  let env = loadEnv(mode, process.cwd())
   return {
     plugins: [
       vue(),
@@ -34,13 +34,13 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     //代理跨越
-    server:{
-      proxy:{
-        [env.VITE_APP_BASE_API]:{
+    server: {
+      proxy: {
+        [env.VITE_APP_BASE_API]: {
           target: env.VITE_SERVE,
           changeOrigin: true,
-        }
-      }
-    }
+        },
+      },
+    },
   }
 })
