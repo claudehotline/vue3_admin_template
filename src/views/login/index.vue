@@ -58,7 +58,7 @@ let loading = ref(false)
 //收集账号与密码的数据
 let loginForm = reactive({
   username: 'admin',
-  password: '111111',
+  password: 'atguigu123',
 })
 
 //登录按钮的回调
