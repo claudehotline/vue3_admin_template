@@ -2,7 +2,11 @@
 import { defineStore } from 'pinia'
 //引入接口
 import { reqLogin, reqUserInfo, reqLogout } from '@/api/user'
-import type { loginFormData, loginResponseData, UserInfoResponseData } from '@/api/user/type';
+import type {
+  loginFormData,
+  loginResponseData,
+  UserInfoResponseData,
+} from '@/api/user/type'
 //引入数据类型
 // import type { loginForm, loginResponseData } from '@/api/user/type'
 import type { UserState } from './types/type'
@@ -34,7 +38,7 @@ let useUserStore = defineStore('User', {
         //由于pinia|vuex存储数据其实利用js对象
         this.token = result.data as string
         //本地存储持久化存储一份
-        SET_TOKEN(result.data as string);
+        SET_TOKEN(result.data as string)
         //保证当前async函数返回一个成功的promise
         return 'ok'
       } else {
@@ -44,24 +48,24 @@ let useUserStore = defineStore('User', {
     //获取用户信息的方法
     async userInfo() {
       //获取用户的信息存储在仓库当中 用户头像、名字
-      let result:UserInfoResponseData = await reqUserInfo()
+      let result: UserInfoResponseData = await reqUserInfo()
       if (result.code == 200) {
-        this.username = result.data.name;
-        this.avatar = result.data.avatar;
+        this.username = result.data.name
+        this.avatar = result.data.avatar
         return 'ok'
       } else {
-        return Promise.reject(new Error(result.message));
+        return Promise.reject(new Error(result.message))
       }
     },
 
     async userLogout() {
-      let result:any = await reqLogout();
+      let result: any = await reqLogout()
       if (result.code == 200) {
         this.token = ''
         this.username = ''
         this.avatar = ''
         REMOVE_TOKEN()
-        return 'ok';
+        return 'ok'
       } else {
         return Promise.reject(new Error(result.message))
       }
