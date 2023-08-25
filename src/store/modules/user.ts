@@ -30,7 +30,7 @@ let useUserStore = defineStore('User', {
     //用户登录
     async userLogin(data: loginFormData) {
       let result: loginResponseData = await reqLogin(data)
-      console.log(result);
+      console.log(result)
       //登录请求：成功200->token
       //登录请求：失败201->登录失败错误的信息
       if (result.code == 200) {
